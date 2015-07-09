@@ -1,0 +1,54 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header {
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+.green {
+    color: #419641;
+}
+
+.red {
+    color: #c12e2a;
+}
+
+#login-buttons {
+    float:right;
+    line-height: 40px;
+}
+
+.btn {
+    margin: 5px 0px;
+}
+
+.payoffs {
+    margin-top: 10px;
+    width: 500px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.has-error.radio label, .has-success.radio label {
+    font-weight: bold !important;
+}
+
+h5 {
+    text-decoration: underline;
+}
+
+td {
+    padding: 4px !important;
+}

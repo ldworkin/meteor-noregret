@@ -1,0 +1,54 @@
+<template name="game">
+  <div class="row marketing">
+    <div class="col-lg-12">
+
+      <h4>Sequence {{gameNum}} (out of {{numGames}})</h4>
+      
+      {{#if showPrevious}}
+      <table class="table table-bordered">
+	<tbody>
+	  <tr>
+	    <td><strong>Step</strong></td>
+	    <td><strong>Your Choice</strong></td>
+	    <td><strong>Expert 1 Points</strong></td>
+	    <td><strong>Expert 2 Points</strong></td>
+	    <td><strong>Your Points</strong></td>
+	  </tr>
+	  {{#each results}}
+	  <tr>
+	    <td>{{step_}}</td>
+	    <td>{{choice}}</td>
+	    <td>{{e1}}</td>
+	    <td>{{e2}}</td>
+	    <td>{{payoff}}</td>
+	  </tr>
+	  {{/each}}
+	  <tr>
+	    <td colspan="2" class="align-right"><strong>Total Points</strong></td>
+	    <td>{{payoffs.e1}}</td>
+	    <td>{{payoffs.e2}}</td>
+	    <td>{{payoffs.you}}</td>
+	  </tr>
+	</tbody>
+      </table>
+      {{/if}}
+
+      {{#if playing}}
+      <p>Step {{step}} (out of {{totalSteps}})<br/>
+      Choose an expert:</p>
+      <button type="button" class="btn btn-success predict" value="0">Expert 1</button>
+      <button type="button" class="btn btn-danger predict" value="1">Expert 2</button>
+
+      {{else}} <!-- game is over -->
+
+      {{#if done}} <!-- ready to submit -->
+      You have completed the experiment.
+      <!-- {{> submit reason="finished"}} -->
+      {{else}}
+      <button type="button" class="btn btn-default next">Next Sequence</button>
+      {{/if}}
+
+      {{/if}}
+    </div>
+  </div>
+</template>
