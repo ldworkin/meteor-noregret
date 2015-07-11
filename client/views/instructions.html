@@ -1,5 +1,9 @@
 <template name="instructions">
 <h4>Welcome.</h4>
-<p>In this experiment you will play a sequence of games. Each game consists of multiple steps. In each step, you must choose between one of two "experts." After you make your choice, one of the experts will receive a point, and the other will not. If you chose the expert who received a point, you will receive a point as well. After this, the next step will begin, and you must make another choice. Your goal is to accumulate as many points as possible.</p>
+<p>In this HIT you will play a sequence of 10 games. Each game consists of 100 steps. In each step, you must choose either the <span class="red">Red</span> action or the <span class="blue">Blue</span> action. After you make your choice, the payoff of each action will be revealed. The payoff will either be 0 or 1. You will receive the payoff of the action that you chose. Then the next step will begin, and you must make another choice.</p>
+
+<p>Your goal is to accumulate as many points as possible. We will convert your score to dollars at the rate of 2 points = 1 cent. The amount you earn will be given to you as the bonus for the HIT. Regardless of the decisions you make, you will earn a base rate of 25 cents for completing the HIT.</p>
+{{#if currentUser}}
 <button type="button" class="btn btn-default game">Begin Game</button>
+{{/if}}
 </template>

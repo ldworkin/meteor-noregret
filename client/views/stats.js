@@ -6,4 +6,8 @@ Template.stats.helpers({
     totalScore: function() {
 	return Meteor.user().score;
     },
+    totalBonus: function() {
+	var amt = Meteor.user().score * 0.005;
+	return amt.toFixed(2);
+    }
 });

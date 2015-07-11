@@ -1,52 +1,50 @@
 <template name="game">
-  <div class="row marketing">
+  <div class="row">
     <div class="col-lg-12">
 
-      <h4>Sequence {{gameNum}} (out of {{numGames}})</h4>
+      <h4>Game {{gameNum}} (out of {{numGames}})</h4>
 
-      {{#if showPrevious}}
-      <table class="table table-bordered">
-	<tbody>
+      {{#if playing}}
+      <p>Step {{step}} (out of {{totalSteps}})</p>
+      <p>Click either the <span class="red">Red</span> action button or <span class="blue">Blue</span> action button below to make your choice for this step. The payoff that each action received on the previous step will be shown above its button, and the payoff that you received on the previous step is shown to the right.</p>
+      {{/if}}
+      <table class="table">
+	<thead>
         <tr>
 	  <td></td>
-          <td><strong>Expert 1 Payoff</strong></td>
-          <td><strong>Expert 2 Payoff</strong></td>
+          <td><strong>Red Payoff</strong></td>
+          <td><strong>Blue Payoff</strong></td>
           <td><strong>Your Payoff</strong></td>
         </tr>
+	</thead>
+	<tbody>
         <tr>
-	  <td><strong>Last Step</strong></td>
+	  <td><strong>Previous Step</strong></td>
           <td>{{results.e1}}</td>
           <td>{{results.e2}}</td>
           <td>{{results.payoff}}</td>
         </tr>
         <tr>
-	  <td><strong>Total</strong></td>
-          <td>{{payoffs.e1}}</td>
-          <td>{{payoffs.e2}}</td>
-          <td>{{payoffs.you}}</td>
+	  <td><strong>Choose</strong></td>
+          <td><button type="button" class="btn btn-danger predict {{#unless playing}} disabled {{/unless}}" value="0">Red Action</button>
+	  </td>
+          <td><button type="button" class="btn btn-primary predict {{#unless playing}} disabled {{/unless}}" value="1">Blue Action</button>
+	  </td>
+          <td></td>
         </tr>
 	</tbody>
       </table>
-      {{/if}}
 
-      {{#if playing}}
-      <p>Step {{step}} (out of {{totalSteps}})<br/>
-      Choose an expert:</p>
-      <button type="button" class="btn btn-success predict" value="0">Expert 1</button>
-      <button type="button" class="btn btn-danger predict" value="1">Expert 2</button>
-
-      {{else}} <!-- game is over -->
+      {{#unless playing}}
 
       {{#if done}} <!-- ready to submit -->
-      You have completed the experiment.
-      <!-- {{> submit reason="finished"}} -->
+      <p>You have completed the experiment.</p>
+      {{> submit}}
+      
       {{else}}
       <button type="button" class="btn btn-default next">Next Sequence</button>
       {{/if}}
-
-      {{/if}}
-
-      
+      {{/unless}}
     </div>
   </div>
 </template>

@@ -14,11 +14,12 @@ Template.game.helpers({
     },
     done: function() {
 	var u = Meteor.user();
-	return u && u.games && u.games.length == sequences.length;
+	//MODIFIED
+	return u && u.games && u.games.length == 2;
     },
     step: function() {
 	var g = game();
-	return g && game().step + 1;
+	return g && g.step + 1;
     },    
     totalSteps: function() {
 	var g = game();

@@ -2,7 +2,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sequence Prediction Experiment</title>
+  <title>Prediction Experiment</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="style.css">
@@ -13,8 +13,10 @@
   <div class="container">
     <div class="row header">
       <div class="col-md-12">
-	<h3 class="text-muted">Sequence Prediction Experiment</h3>
+	<h3 class="text-muted">Prediction Experiment</h3>
+	{{#if demo}}
 	{{> loginButtons}}
+	{{/if}}
       </div>
     </div>
     <div class="row">
@@ -39,7 +41,11 @@
 </template>
 
 <template name="loggedout">
+  {{#if demo}}
   Please login or signup using the link above.
+  {{else}}
+  {{>instructions}}
+  {{/if}}
 </template>
 
 <template name="loading">

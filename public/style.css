@@ -15,40 +15,12 @@ body {
   line-height: 40px;
 }
 
-.green {
-    color: #419641;
+.blue {
+    color: #337ab7;
+    font-weight: bold;
 }
 
 .red {
-    color: #c12e2a;
-}
-
-/* #login-buttons { */
-/*     float:right; */
-/*     line-height: 40px; */
-/* } */
-
-.btn {
-    margin: 5px 0px;
-}
-
-.payoffs {
-    margin-top: 10px;
-    width: 500px;
-}
-
-.align-right {
-    text-align: right;
-}
-
-.has-error.radio label, .has-success.radio label {
-    font-weight: bold !important;
-}
-
-h5 {
-    text-decoration: underline;
-}
-
-td {
-    padding: 4px !important;
+    color: #d43f3a;
+    font-weight: bold;
 }

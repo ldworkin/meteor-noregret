@@ -8,7 +8,8 @@ Meteor.methods({
 				    sequence_id: sid,
 				    step: 0,
 				    predictions: [],
-				    scores: []});
+				    scores: [],
+				    timestamps: []});
 	Meteor.users.update({_id: Meteor.userId()},
 			    {$set: {state: 'game',
 				    'game.game_id': game_id}});
@@ -21,6 +22,7 @@ Meteor.methods({
 	var payoff = sequence[step][expert];
 	obj['predictions'] = expert;
 	obj['scores'] = payoff;
+	obj['timestamps'] = new Date();
 	Games.update({_id: g._id},
 		     {$inc: {step: 1},
 		      $push: obj});
@@ -33,14 +35,9 @@ Meteor.methods({
 				{$push: {games: gid()}});	    
 	}
     },
-    completeHIT: function(state) {
+    completeHIT: function() {
 	Meteor.users.update({_id: pid()},
-			    {$set: {state: state,
-				    submitted: true}});
-    },
-    abandonGame: function() {
-	Games.update({_id: gid()},
-		     {$set: {status: 'abandoned'}});
+			    {$set: {submitted: true}});
     },
     setState: function(state) {
 	Meteor.users.update({_id: pid()},

@@ -3,6 +3,15 @@ Template.wrapper.helpers({
 	var state = playerState();
 	return (state == 'game' ||
 		state == 'lobby');
+    },
+    demo: function() {
+	return demo;
+    }
+});
+
+Template.loggedout.helpers({
+    demo: function() {
+	return demo;
     }
 });
 
