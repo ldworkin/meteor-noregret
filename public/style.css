@@ -23,10 +23,10 @@ body {
     color: #c12e2a;
 }
 
-#login-buttons {
-    float:right;
-    line-height: 40px;
-}
+/* #login-buttons { */
+/*     float:right; */
+/*     line-height: 40px; */
+/* } */
 
 .btn {
     margin: 5px 0px;

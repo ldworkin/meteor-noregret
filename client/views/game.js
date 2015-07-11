@@ -33,7 +33,8 @@ Template.game.helpers({
 	return g && g.status != 'over';
     },
     results: function() {
-	return results();
+	var r = results();
+	return r[r.length-1];
     },
     payoffs: function() {
 	var r = results();

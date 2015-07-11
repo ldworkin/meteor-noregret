@@ -3,32 +3,28 @@
     <div class="col-lg-12">
 
       <h4>Sequence {{gameNum}} (out of {{numGames}})</h4>
-      
+
       {{#if showPrevious}}
       <table class="table table-bordered">
 	<tbody>
-	  <tr>
-	    <td><strong>Step</strong></td>
-	    <td><strong>Your Choice</strong></td>
-	    <td><strong>Expert 1 Points</strong></td>
-	    <td><strong>Expert 2 Points</strong></td>
-	    <td><strong>Your Points</strong></td>
-	  </tr>
-	  {{#each results}}
-	  <tr>
-	    <td>{{step_}}</td>
-	    <td>{{choice}}</td>
-	    <td>{{e1}}</td>
-	    <td>{{e2}}</td>
-	    <td>{{payoff}}</td>
-	  </tr>
-	  {{/each}}
-	  <tr>
-	    <td colspan="2" class="align-right"><strong>Total Points</strong></td>
-	    <td>{{payoffs.e1}}</td>
-	    <td>{{payoffs.e2}}</td>
-	    <td>{{payoffs.you}}</td>
-	  </tr>
+        <tr>
+	  <td></td>
+          <td><strong>Expert 1 Payoff</strong></td>
+          <td><strong>Expert 2 Payoff</strong></td>
+          <td><strong>Your Payoff</strong></td>
+        </tr>
+        <tr>
+	  <td><strong>Last Step</strong></td>
+          <td>{{results.e1}}</td>
+          <td>{{results.e2}}</td>
+          <td>{{results.payoff}}</td>
+        </tr>
+        <tr>
+	  <td><strong>Total</strong></td>
+          <td>{{payoffs.e1}}</td>
+          <td>{{payoffs.e2}}</td>
+          <td>{{payoffs.you}}</td>
+        </tr>
 	</tbody>
       </table>
       {{/if}}
@@ -49,6 +45,8 @@
       {{/if}}
 
       {{/if}}
+
+      
     </div>
   </div>
 </template>

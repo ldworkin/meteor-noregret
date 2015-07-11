@@ -16,7 +16,7 @@ Meteor.methods({
     makePrediction: function(expert) {
 	var g = game();
 	var step = g.step;
-	var sequence = sequences[g.sequence_id];
+	var sequence = sequences[seqIds[g.sequence_id]];
 	var obj = {};
 	var payoff = sequence[step][expert];
 	obj['predictions'] = expert;
