@@ -14,8 +14,7 @@ Template.game.helpers({
     },
     done: function() {
 	var u = Meteor.user();
-	//MODIFIED
-	return u && u.games && u.games.length == 2;
+	return u && u.games && u.games.length == sequences.length;
     },
     step: function() {
 	var g = game();

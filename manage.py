@@ -19,7 +19,7 @@ config = {'use_sandbox': sandbox,
 m = mturk.MechanicalTurk(config)
 
 client = MongoClient(params['mongoURI'])
-db = client.test
+db = client.tiZud2yh
 
 def dump_db():
     # make sure to run mongod in another tab first
