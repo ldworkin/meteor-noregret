@@ -18,7 +18,11 @@ Template.game.helpers({
     },
     step: function() {
 	var g = game();
-	return g && g.step + 1;
+	var number = g.step;
+	if (g.status != 'over') {	    
+	    number += 1;
+	}
+	return number;
     },    
     totalSteps: function() {
 	var g = game();
@@ -47,15 +51,22 @@ Template.game.helpers({
 	    obj['e2'] += r[i]['e2'];
 	}
 	return obj;
+    },
+    instructionsOpen: function() {
+	return Session.get('instructionsOpen');
     }
 });
 
 Template.game.events({
-    "click .predict": function (e) {
+    "click .predict": function(e) {
 	Meteor.call('makePrediction', parseInt(e.target.value));
     },
     "click .next": function() {
 	var g = game();	
 	Meteor.call('newGame', g.sequence_id + 1);
+    },
+    "click .collapser": function() {
+	var prev = Session.get('instructionsOpen');
+	Session.set('instructionsOpen', !prev);
     }
 });

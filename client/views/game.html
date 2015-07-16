@@ -2,36 +2,51 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <h4>Game {{gameNum}} (out of {{numGames}})</h4>
+      <h4>Game {{gameNum}}</h4>
 
-      {{#if playing}}
-      <p>Step {{step}} (out of {{totalSteps}})</p>
-      <p>Click either the <span class="red">Red</span> action button or <span class="blue">Blue</span> action button below to make your choice for this step. The payoff that each action received on the previous step will be shown above its button, and the payoff that you received on the previous step is shown to the right.</p>
-      {{/if}}
+
+      <p>Click either the <span class="red">Red</span> action button or <span class="blue">Blue</span> action button below to make your choice for this round. The payoff that each action received on the previous round will be shown above its button, and the payoff that you received on the previous round is shown to the right.</p>
+
+      <a class="btn btn-default collapser" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+	{{#if instructionsOpen}}
+	Click here to hide the instructions.
+	{{else}}
+	Click here to be reminded of the instructions.
+	{{/if}}
+      </a>
+      <div class="collapse" id="collapseExample">
+	<div class="well">
+	  <p>In this HIT you will play a sequence of 10 games. Each game consists of 100 rounds. In each round, you must choose either the <span class="red">Red</span> action or the <span class="blue">Blue</span> action. After you make your choice, the payoff of each action will be revealed. The payoff will either be 0 points or 1 point. You will receive the payoff of the action that you chose. Then the next round will begin, and you must make another choice.</p>
+	  <p>Your goal is to accumulate as many points as possible. We will convert your score to dollars at the rate of 2 points = 1 cent. The amount you earn will be given to you as the bonus for the HIT. Regardless of the decisions you make, you will earn a base rate of 25 cents for completing the HIT. Note that you will only receive a bonus if you complete all 10 games.</p>
+	</div>
+      </div>
       <table class="table">
 	<thead>
-        <tr>
-	  <td></td>
-          <td><strong>Red Payoff</strong></td>
-          <td><strong>Blue Payoff</strong></td>
-          <td><strong>Your Payoff</strong></td>
-        </tr>
+	  <tr>
+	    <td colspan="4" class="center"><h4>Round {{step}}</h4></td>
+	  </tr>
+          <tr>
+	    <td></td>
+            <td><strong>Red Payoff</strong></td>
+            <td><strong>Blue Payoff</strong></td>
+            <td><strong>Your Payoff</strong></td>
+          </tr>
 	</thead>
 	<tbody>
-        <tr>
-	  <td><strong>Previous Step</strong></td>
-          <td>{{results.e1}}</td>
-          <td>{{results.e2}}</td>
+          <tr>
+	    <td><strong>Previous Round</strong></td>
+            <td>{{results.e1}}</td>
+            <td>{{results.e2}}</td>
           <td>{{results.payoff}}</td>
-        </tr>
-        <tr>
-	  <td><strong>Choose</strong></td>
-          <td><button type="button" class="btn btn-danger predict {{#unless playing}} disabled {{/unless}}" value="0">Red Action</button>
-	  </td>
-          <td><button type="button" class="btn btn-primary predict {{#unless playing}} disabled {{/unless}}" value="1">Blue Action</button>
-	  </td>
-          <td></td>
-        </tr>
+          </tr>
+          <tr>
+	    <td><strong>Choose</strong></td>
+            <td><button type="button" class="btn btn-danger predict {{#unless playing}} disabled {{/unless}}" value="0">Red Action</button>
+	    </td>
+            <td><button type="button" class="btn btn-primary predict {{#unless playing}} disabled {{/unless}}" value="1">Blue Action</button>
+	    </td>
+            <td></td>
+          </tr>
 	</tbody>
       </table>
 

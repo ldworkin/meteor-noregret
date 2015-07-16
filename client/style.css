@@ -24,3 +24,7 @@ body {
     color: #d43f3a;
     font-weight: bold;
 }
+
+.center {
+    text-align: center;
+}

@@ -1,8 +1,14 @@
 Template.stats.helpers({
-    numGames: function() {
-	var user = Meteor.user();
-	return user && user.games && user.games.length;
+    thisScore: function() {
+	var g = game();
+	return sum(g.scores);
     },
+    thisBonus: function() {
+	var g = game();
+	var amt = sum(g.scores) * 0.005;
+	return amt.toFixed(2);
+    },
+
     totalScore: function() {
 	return Meteor.user().score;
     },
