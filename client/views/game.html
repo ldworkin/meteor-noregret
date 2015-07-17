@@ -41,9 +41,9 @@
           </tr>
           <tr>
 	    <td><strong>Choose</strong></td>
-            <td><button type="button" class="btn btn-danger predict {{#unless playing}} disabled {{/unless}}" value="0">Red Action</button>
+            <td><button type="button" class="btn btn-danger predict {{#unless playing}} disabled {{/unless}}" value="0" disabled={{notPlaying}}>Red Action</button>
 	    </td>
-            <td><button type="button" class="btn btn-primary predict {{#unless playing}} disabled {{/unless}}" value="1">Blue Action</button>
+            <td><button type="button" class="btn btn-primary predict {{#unless playing}} disabled {{/unless}}" value="1" disabled={{notPlaying}}>Blue Action</button>
 	    </td>
             <td></td>
           </tr>
@@ -54,8 +54,7 @@
 
       {{#if done}} <!-- ready to submit -->
       <p>You have completed the experiment.</p>
-      {{> submit}}
-      
+      <button type="button" class="btn btn-default continue">Continue</button>      
       {{else}}
       <button type="button" class="btn btn-default next">Next Game</button>
       {{/if}}

@@ -14,7 +14,8 @@ Template.game.helpers({
     },
     done: function() {
 	var u = Meteor.user();
-	return u && u.games && u.games.length == sequences.length;
+	var length = sequences.length;
+	return u && u.games && u.games.length == length;
     },
     step: function() {
 	var g = game();
@@ -35,6 +36,10 @@ Template.game.helpers({
     playing: function() {
 	var g = game();
 	return g && g.status != 'over';
+    },
+    notPlaying: function() {
+	var g = game();
+	return g && g.status == 'over';
     },
     results: function() {
 	var r = results();
@@ -64,6 +69,9 @@ Template.game.events({
     "click .next": function() {
 	var g = game();	
 	Meteor.call('newGame', g.sequence_id + 1);
+    },
+    "click .continue": function() {
+	Meteor.call('setState', 'submit');
     },
     "click .collapser": function() {
 	var prev = Session.get('instructionsOpen');

@@ -21,22 +21,13 @@ m = mturk.MechanicalTurk(config)
 client = MongoClient(params['mongoURI'])
 db = client.tiZud2yh
 
-def dump_db():
-    # make sure to run mongod in another tab first
-    os.system('./dump.sh lilidworkin.meteor.com')
-
-def print_users():
-    users = db.users.find()
-    for user in users:
-        print user['username']
-        print 'assignmentId: ' + str(user['assignmentId'])
-        print 'score: ' + str(user['score'])
-        print
-
+def clear_db():
+    db.games.remove({})
+    db.users.remove({})
     
 question = """
 <ExternalQuestion xmlns="http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2006-07-14/ExternalQuestion.xsd">
-<ExternalURL>https://lilidworkin.meteor.com</ExternalURL>
+<ExternalURL>https://test-48983.onmodulus.net</ExternalURL>
 <FrameHeight>600</FrameHeight>
 </ExternalQuestion>
 """
@@ -47,7 +38,7 @@ qualifications = [
      'LocaleValue': [{'Country': 'US'}, {'Country':'CA'}]},
      {'QualificationTypeId': mturk.P_APPROVED,
       'Comparator': 'GreaterThanOrEqualTo',
-      'IntegerValue': 95}
+      'IntegerValue': 95},
       ]
                             
 def create_hit():
@@ -60,32 +51,10 @@ def create_hit():
            'AssignmentDurationInSeconds': 60*60,
            'MaxAssignments': 1,
            'AutoApprovalDelayInSeconds': 60,
-           'QualificationRequirement': []}
+           'QualificationRequirement': qualifications}
     r = m.request('CreateHIT', hit)
     print r
-                                        
-                                        
-def get_hits():
-    get = {'Operation': 'SearchHITs'}
-    r = m.request('SearchHITs', get)
-    return r['SearchHITsResponse']['SearchHITsResult']['HIT']
-        
-        
-def delete_hits():
-    get = {'Operation': 'SearchHITs'}
-    r = m.request('SearchHITs', get)
-    hitobjs = r['SearchHITsResponse']['SearchHITsResult']['HIT']
-    if isinstance(hitobjs, dict):
-        hitobjs = [hitobjs]
-        hits = [x['HITId'] for x in hitobjs]
-        for hit in hits:
-            expire = {'Operation': 'ForceExpireHIT',
-                      'HITId': hit}
-            r = m.request('ForceExpireHIT', expire)
-            delete = {'Operation': 'DisposeHIT',
-                      'HITId': hit}
-            r = m.request('DisposeHIT', delete)
-                    
+
 def grant_bonus():
     users = db.users.find()
     for user in users:
