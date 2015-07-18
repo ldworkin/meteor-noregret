@@ -58,8 +58,6 @@ def create_hit():
 def print_users():
     users = db.users.find()
     for user in users:
-        if user['state']=='submit':
-            continue
         print 'Username: %s' % user['username']
         print 'AId: %s' % user['assignmentId']
         print 'State: %s' % user['state']        
@@ -84,7 +82,6 @@ def grant_bonus():
                 db.users.update_one({'username': user['username']}, {'$set': {'paid': True}})
             else:
                 print 'Did not update.'
-
 
 def create_qual(name, desc):
     qual = {'Operation': 'CreateQualificationType',
